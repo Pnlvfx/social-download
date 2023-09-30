@@ -1,4 +1,4 @@
-import insta from '../../dist/esm/insta.js';
+import insta from '../insta.js';
 
 const test = {
   reel: 'https://www.instagram.com/reel/CvWor-GNv6O/?igshid=NzZhOTFlYzFmZQ==',
