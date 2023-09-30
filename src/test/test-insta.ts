@@ -6,6 +6,6 @@ const test = {
 };
 
 export const testInsta = async () => {
-  const info = await insta.download(test.reel); // remember that story expire
+  const info = await insta.getInfo(test.reel); // remember that story expire
   console.log('Insta ok', info);
 };

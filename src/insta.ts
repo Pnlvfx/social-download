@@ -10,7 +10,7 @@ const headers = {
 };
 
 const insta = {
-  download: async (url: string) => {
+  getInfo: async (url: string) => {
     const dwurl = 'https://saveig.app/api/ajaxSearch';
     const query = querystring.stringify({ q: url, t: 'media', lang: 'en' });
     const res = await fetch(`${dwurl}?${query}`, {
