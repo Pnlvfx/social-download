@@ -1,6 +1,12 @@
 import * as cheerio from 'cheerio';
 import { TiktokInfo } from './types/index.js';
-import { getKey } from './helpers/index.js';
+
+const getKey = (page: cheerio.Cheerio<cheerio.AnyNode>) => {
+  const regex = /key=([\da-f-]+)/;
+  const key = page.text().match(regex);
+  // eslint-disable-next-line unicorn/no-null
+  return key ? key[1] : null;
+};
 
 const tiktok = {
   getInfo: async (link: string): Promise<TiktokInfo> => {
