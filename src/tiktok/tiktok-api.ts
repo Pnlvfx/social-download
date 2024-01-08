@@ -8,15 +8,15 @@ export const TiktokAPI = async (url: string): Promise<TiktokAPIResponse> => {
   try {
     url = url.replace('https://vm', 'https://vt');
     const res = await fetch(url, { method: 'HEAD' });
-    const ID = res.url.match(/\d{17,21}/g);
+    const ID = res.url.match(/\d{17,21}/g)?.at(0);
     if (!ID)
       return {
         status: 'error',
         message: 'Failed to fetch tiktok url. Make sure your tiktok url is correct!',
       };
-    const res2 = await fetch(_tiktokapi(new URLSearchParams(withParams({ aweme_id: ID[0] })).toString()));
+    const res2 = await fetch(_tiktokapi(new URLSearchParams(withParams({ aweme_id: ID })).toString()));
     const data = await res2.json();
-    const content = data.aweme_list.filter((v: any) => v.aweme_id === ID.at(0)).at(0);
+    const content = data.aweme_list.find((v: any) => v.aweme_id === ID);
     if (!content)
       return {
         status: 'error',
