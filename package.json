@@ -20,7 +20,7 @@
   "license": "MIT",
   "scripts": {
     "generate:package.json": "tsx ./tools/generate-commonjs-package-json.ts dist/cjs/package.json",
-    "dev": "tsc -w --outDir dist/esm & nodemon ./dist/esm/index.js",
+    "dev": "tsc -w --outDir dist/esm & node --watch ./dist/esm/index.js",
     "start": "node .",
     "lint": "eslint ./src",
     "build": "rimraf dist && npm run lint && npm run build:esm && npm run build:cjs && npm run generate:package.json",
@@ -34,25 +34,24 @@
     "LICENSE",
     "README.md"
   ],
+  "peerDependencies": {
+    "cheerio": "^1.0.0-rc.12",
+    "coraline": "github:Pnlvfx/coraline"
+  },
   "devDependencies": {
-    "@types/node": "^20.10.7",
-    "@typescript-eslint/eslint-plugin": "^6.18.0",
-    "@typescript-eslint/parser": "^6.18.0",
+    "@types/node": "^20.11.5",
+    "@typescript-eslint/eslint-plugin": "^6.19.0",
+    "@typescript-eslint/parser": "^6.19.0",
     "eslint": "^8.56.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-import-resolver-typescript": "^3.6.1",
     "eslint-plugin-import": "^2.29.1",
-    "eslint-plugin-prettier": "^5.1.2",
+    "eslint-plugin-prettier": "^5.1.3",
     "eslint-plugin-sonarjs": "^0.23.0",
     "eslint-plugin-unicorn": "^50.0.1",
-    "nodemon": "^3.0.2",
-    "prettier": "^3.1.1",
+    "prettier": "^3.2.4",
     "rimraf": "^5.0.5",
     "tsx": "^4.7.0",
     "typescript": "^5.3.3"
-  },
-  "peerDependencies": {
-    "cheerio": "^1.0.0-rc.12",
-    "coraline": "github:Pnlvfx/coraline"
   }
 }

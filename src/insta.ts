@@ -9,8 +9,13 @@ const headers = {
   'User-Agent': 'PostmanRuntime/7.31.1',
 };
 
+interface InstagramInfos {
+  url: string;
+  type: 'image' | 'video';
+}
+
 const insta = {
-  getInfo: async (url: string) => {
+  getInfo: async (url: string): Promise<InstagramInfos> => {
     const dwurl = 'https://saveig.app/api/ajaxSearch';
     const query = querystring.stringify({ q: url, t: 'media', lang: 'en' });
     const res = await fetch(`${dwurl}?${query}`, {
