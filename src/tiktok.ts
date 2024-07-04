@@ -12,6 +12,10 @@ const tiktok = {
         return data;
       }
     }
+    return {
+      status: 'error',
+      message: 'Something went wrong',
+    };
   },
 };
 
