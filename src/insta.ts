@@ -1,12 +1,16 @@
 import * as cheerio from 'cheerio';
+import coraline from 'coraline';
 import querystring from 'node:querystring';
 
 const headers = {
+  accept: '*/*',
+  'accept-language': 'en',
+  'cache-control': 'no-cache',
   'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
   'Accept-Encoding': 'gzip, deflate, br',
   Origin: 'https://saveig.app/en',
   'Referrer-Policy': 'strict-origin-when-cross-origin',
-  'User-Agent': 'PostmanRuntime/7.31.1',
+  'User-Agent': coraline.getUserAgent(),
 };
 
 interface InstagramInfos {
@@ -16,12 +20,12 @@ interface InstagramInfos {
 
 const insta = {
   getInfo: async (url: string): Promise<InstagramInfos> => {
-    const dwurl = 'https://saveig.app/api/ajaxSearch';
     const query = querystring.stringify({ q: url, t: 'media', lang: 'en' });
-    const res = await fetch(`${dwurl}?${query}`, {
+    const res = await fetch('https://v3.saveig.app/api/ajaxSearch', {
       method: 'POST',
       headers,
       referrer: 'https://saveig.app/en',
+      body: query,
     });
     if (!res.ok) throw new Error(`${res.status}: ${res.statusText}`);
     const json = await res.json();
