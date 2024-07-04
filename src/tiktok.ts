@@ -12,10 +12,7 @@ const tiktok = {
         return data;
       }
     }
-    return {
-      status: 'error',
-      message: 'Something went wrong',
-    };
+    throw new Error('Something went wrong!');
   },
 };
 
