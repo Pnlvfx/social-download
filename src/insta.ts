@@ -9,11 +9,11 @@ const headers = {
   accept: '*/*',
   'accept-language': 'en',
   'cache-control': 'no-cache',
-  'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
-  'Accept-Encoding': 'gzip, deflate, br',
-  Origin: CLIENT_URL,
-  'Referrer-Policy': 'strict-origin-when-cross-origin',
-  'User-Agent': coraline.getUserAgent(),
+  'content-type': 'application/x-www-form-urlencoded; charset=UTF-8',
+  'accept-encoding': 'gzip, deflate, br',
+  origin: CLIENT_URL,
+  'referrer-policy': 'strict-origin-when-cross-origin',
+  'user-agent': coraline.getUserAgent(),
 };
 
 interface InstagramInfos {
