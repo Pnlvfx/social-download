@@ -20,13 +20,13 @@
   },
   "scripts": {
     "tsc": "tsc --noEmit true",
-    "unused": "tsx ./tools/unused.ts",
+    "unused": "node ./tools/unused.ts",
     "test": "rimraf coverage && jest --coverage",
     "lint": "eslint",
     "build": "rimraf dist && eslint && tsc -p tsconfig.build.json",
     "prepare": "husky",
     "prepack": "yarn build",
-    "prepublishOnly": "npm run test && eslint"
+    "prepublishOnly": "yarn test && eslint"
   },
   "files": [
     "dist",
@@ -49,6 +49,7 @@
     "rimraf": "^6.0.1",
     "ts-jest": "^29.2.5",
     "ts-node": "^10.9.2",
+    "ts-unused-exports": "^11.0.1",
     "typescript": "^5.7.3",
     "typescript-eslint": "^8.22.0"
   },
