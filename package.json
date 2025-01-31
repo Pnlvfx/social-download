@@ -24,7 +24,7 @@
     "test": "rimraf coverage && jest --coverage",
     "lint": "eslint",
     "build": "rimraf dist && eslint && tsc -p tsconfig.build.json",
-    "prepare": "husky && yarn build",
+    "prepare": "husky && npm run build",
     "prepack": "yarn build",
     "prepublishOnly": "yarn test && eslint"
   },
