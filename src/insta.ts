@@ -1,5 +1,5 @@
 import * as cheerio from 'cheerio';
-import coraline from 'coraline';
+import { getUserAgent } from 'coraline/node/user-agent';
 import querystring from 'node:querystring';
 
 const CLIENT_URL = 'https://savevid.net/en';
@@ -13,7 +13,7 @@ const headers = {
   'accept-encoding': 'gzip, deflate, br',
   origin: CLIENT_URL,
   'referrer-policy': 'strict-origin-when-cross-origin',
-  'user-agent': coraline.getUserAgent(),
+  'user-agent': getUserAgent(),
 };
 
 interface InstagramInfos {

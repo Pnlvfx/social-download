@@ -50,6 +50,7 @@ export default tseslint.config(
       'no-unsafe-negation': 'error',
       'prefer-const': 'error',
       'no-console': 'warn',
+      'sonarjs/todo-tag': 'warn',
 
       'no-unused-vars': 'off',
       '@typescript-eslint/no-unused-vars': 'off',
