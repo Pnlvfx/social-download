@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-argument */
-
 import eslint from '@eslint/js';
 import globals from 'globals';
 import sonarjs from 'eslint-plugin-sonarjs';
@@ -7,24 +5,14 @@ import tseslint from 'typescript-eslint';
 import unicorn from 'eslint-plugin-unicorn';
 
 export default tseslint.config(
-  {
-    ignores: ['dist', 'coverage'],
-  },
+  { ignores: ['dist', 'coverage'] },
   eslint.configs.recommended,
-  unicorn.configs['flat/all'],
+  unicorn.configs.all,
   sonarjs.configs.recommended,
   ...tseslint.configs.recommendedTypeChecked,
   ...tseslint.configs.strictTypeChecked,
   ...tseslint.configs.stylisticTypeChecked,
-  {
-    languageOptions: {
-      globals: globals.builtin,
-      parserOptions: {
-        projectService: true,
-        tsconfigRootDir: import.meta.dirname,
-      },
-    },
-  },
+  { languageOptions: { globals: globals.builtin, parserOptions: { projectService: true, tsconfigRootDir: import.meta.dirname } } },
   {
     rules: {
       indent: ['error', 2, { SwitchCase: 1 }],
@@ -63,8 +51,5 @@ export default tseslint.config(
       'sonarjs/sonar-prefer-optional-chain': 'off',
     },
   },
-  {
-    files: ['src/**/*.js'],
-    ...tseslint.configs.disableTypeChecked,
-  },
+  { files: ['src/**/*.js'], ...tseslint.configs.disableTypeChecked },
 );

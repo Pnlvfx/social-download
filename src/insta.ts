@@ -1,5 +1,5 @@
+import { getUserAgent } from '@goatjs/node/user-agent';
 import * as cheerio from 'cheerio';
-import { getUserAgent } from 'coraline/node/user-agent';
 import querystring from 'node:querystring';
 
 const CLIENT_URL = 'https://savevid.net/en';
@@ -29,12 +29,7 @@ interface InstagramData {
 const insta = {
   getInfo: async (url: string): Promise<InstagramInfos> => {
     const query = querystring.stringify({ q: url, t: 'media', lang: 'en', v: 'v2' });
-    const res = await fetch(SERVER_URL, {
-      method: 'POST',
-      headers,
-      referrer: CLIENT_URL,
-      body: query,
-    });
+    const res = await fetch(SERVER_URL, { method: 'POST', headers, referrer: CLIENT_URL, body: query });
     if (!res.ok) throw new Error(`${res.status.toString()}: ${res.statusText}`);
     const json = (await res.json()) as InstagramData;
     const $ = cheerio.load(json.data);
