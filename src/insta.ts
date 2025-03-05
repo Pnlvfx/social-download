@@ -26,7 +26,7 @@ interface InstagramData {
   data: string;
 }
 
-const insta = {
+export const insta = {
   getInfo: async (url: string): Promise<InstagramInfos> => {
     const query = querystring.stringify({ q: url, t: 'media', lang: 'en', v: 'v2' });
     const res = await fetch(SERVER_URL, { method: 'POST', headers, referrer: CLIENT_URL, body: query });
@@ -41,5 +41,3 @@ const insta = {
     return { url: mediaurl, type };
   },
 };
-
-export default insta;
